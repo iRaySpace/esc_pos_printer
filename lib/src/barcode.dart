@@ -75,7 +75,7 @@ class Barcode {
 
     final numeric = RegExp(r'^[0-9]$');
     final bool isDataValid =
-        barcodeData.every((dynamic d) => numeric.hasMatch(d.toString()));
+    barcodeData.every((dynamic d) => numeric.hasMatch(d.toString()));
     if (!isDataValid) {
       throw Exception('Barcode: Data is not valid');
     }
@@ -100,7 +100,7 @@ class Barcode {
 
     final numeric = RegExp(r'^[0-9]$');
     final bool isDataValid =
-        barcodeData.every((dynamic d) => numeric.hasMatch(d.toString()));
+    barcodeData.every((dynamic d) => numeric.hasMatch(d.toString()));
     if (!isDataValid) {
       throw Exception('Barcode: Data is not valid');
     }
@@ -121,7 +121,7 @@ class Barcode {
 
     final numeric = RegExp(r'^[0-9]$');
     final bool isDataValid =
-        barcodeData.every((dynamic d) => numeric.hasMatch(d.toString()));
+    barcodeData.every((dynamic d) => numeric.hasMatch(d.toString()));
     if (!isDataValid) {
       throw Exception('Barcode: Data is not valid');
     }
@@ -142,7 +142,7 @@ class Barcode {
 
     final numeric = RegExp(r'^[0-9]$');
     final bool isDataValid =
-        barcodeData.every((dynamic d) => numeric.hasMatch(d.toString()));
+    barcodeData.every((dynamic d) => numeric.hasMatch(d.toString()));
     if (!isDataValid) {
       throw Exception('Barcode: Data is not valid');
     }
@@ -163,7 +163,7 @@ class Barcode {
 
     final regex = RegExp(r'^[0-9A-Z \$\%\*\+\-\.\/]$');
     final bool isDataValid =
-        barcodeData.every((dynamic d) => regex.hasMatch(d.toString()));
+    barcodeData.every((dynamic d) => regex.hasMatch(d.toString()));
     if (!isDataValid) {
       throw Exception('Barcode: Data is not valid');
     }
@@ -184,7 +184,7 @@ class Barcode {
 
     final numeric = RegExp(r'^[0-9]$');
     final bool isDataValid =
-        barcodeData.every((dynamic d) => numeric.hasMatch(d.toString()));
+    barcodeData.every((dynamic d) => numeric.hasMatch(d.toString()));
     if (!isDataValid) {
       throw Exception('Barcode: Data is not valid');
     }
@@ -207,7 +207,7 @@ class Barcode {
 
     final regex = RegExp(r'^[0-9A-Da-d\$\+\-\.\/\:]$');
     final bool isDataValid =
-        barcodeData.every((dynamic d) => regex.hasMatch(d.toString()));
+    barcodeData.every((dynamic d) => regex.hasMatch(d.toString()));
     if (!isDataValid) {
       throw Exception('Barcode: Data is not valid');
     }

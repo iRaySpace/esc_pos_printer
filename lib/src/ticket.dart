@@ -45,12 +45,12 @@ class Ticket {
   ///
   /// [colInd] range: 0..11
   void _text(
-    String text, {
-    PosStyles styles = const PosStyles(),
-    int colInd = 0,
-    bool kanjiOff = true,
-    int colWidth = 12,
-  }) {
+      String text, {
+        PosStyles styles = const PosStyles(),
+        int colInd = 0,
+        bool kanjiOff = true,
+        int colWidth = 12,
+      }) {
     const charLen = 11.625; // 48 symbols per line for 80mm and 32 for 58mm
     double fromPos = _colIndToPosition(colInd);
 
@@ -77,7 +77,7 @@ class Ticket {
     bytes += styles.turn90 ? cTurn90On.codeUnits : cTurn90Off.codeUnits;
     bytes += styles.reverse ? cReverseOn.codeUnits : cReverseOff.codeUnits;
     bytes +=
-        styles.underline ? cUnderline1dot.codeUnits : cUnderlineOff.codeUnits;
+    styles.underline ? cUnderline1dot.codeUnits : cUnderlineOff.codeUnits;
     bytes += styles.fontType == PosFontType.fontA
         ? cFontA.codeUnits
         : cFontB.codeUnits;
@@ -121,11 +121,11 @@ class Ticket {
   }
 
   void text(
-    String text, {
-    PosStyles styles = const PosStyles(),
-    int linesAfter = 0,
-    bool containsChinese = false,
-  }) {
+      String text, {
+        PosStyles styles = const PosStyles(),
+        int linesAfter = 0,
+        bool containsChinese = false,
+      }) {
     if (!containsChinese) {
       _text(
         text,
@@ -138,7 +138,13 @@ class Ticket {
       _mixedKanji(text, styles: styles, linesAfter: linesAfter);
     }
   }
-
+  void drawer({DrawerPin mode = DrawerPin.pin2}) {
+    if (mode == DrawerPin.pin2) {
+      bytes += cCashDrawerPin2.codeUnits;
+    } else {
+      bytes += cCashDrawerPin5.codeUnits;
+    }
+  }
   /// Break text into chinese/non-chinese lexemes
   List _getLexemes(String text) {
     bool _isChinese(String ch) {
@@ -169,10 +175,10 @@ class Ticket {
 
   /// Prints one line of styled mixed (chinese and latin symbols) text
   void _mixedKanji(
-    String text, {
-    PosStyles styles = const PosStyles(),
-    int linesAfter = 0,
-  }) {
+      String text, {
+        PosStyles styles = const PosStyles(),
+        int linesAfter = 0,
+      }) {
     final list = _getLexemes(text);
     final List<String> lexemes = list[0];
     final List<bool> isLexemeChinese = list[1];
@@ -226,7 +232,7 @@ class Ticket {
 
     for (int i = 0; i < cols.length; ++i) {
       final colInd =
-          cols.sublist(0, i).fold(0, (int sum, col) => sum + col.width);
+      cols.sublist(0, i).fold(0, (int sum, col) => sum + col.width);
       if (!cols[i].containsChinese) {
         _text(
           cols[i].text,
@@ -348,7 +354,7 @@ class Ticket {
   /// Replaces a single bit in a 32-bit unsigned integer.
   int _transformUint32Bool(int uint32, int shift, bool newValue) {
     return ((0xFFFFFFFF ^ (0x1 << shift)) & uint32) |
-        ((newValue ? 1 : 0) << shift);
+    ((newValue ? 1 : 0) << shift);
   }
 
   /// Merges each 8 values (bits) into one byte
@@ -444,10 +450,10 @@ class Ticket {
   ///
   /// [image] is an instanse of class from [Image library](https://pub.dev/packages/image)
   void imageRaster(
-    Image imgSrc, {
-    bool highDensityHorizontal = true,
-    bool highDensityVertical = true,
-  }) {
+      Image imgSrc, {
+        bool highDensityHorizontal = true,
+        bool highDensityVertical = true,
+      }) {
     final Image image = Image.from(imgSrc); // make a copy
 
     final int widthPx = image.width;
@@ -493,12 +499,12 @@ class Ticket {
   /// [height] range: 1 - 255. The units depend on the printer model.
   /// Width, height, font, text position settings are effective until performing of ESC @, reset or power-off.
   void barcode(
-    Barcode barcode, {
-    int width,
-    int height,
-    BarcodeFont font,
-    BarcodeText textPos = BarcodeText.below,
-  }) {
+      Barcode barcode, {
+        int width,
+        int height,
+        BarcodeFont font,
+        BarcodeText textPos = BarcodeText.below,
+      }) {
     // Set text position
     rawBytes(cBarcodeSelectPos.codeUnits + [textPos.value]);
 
