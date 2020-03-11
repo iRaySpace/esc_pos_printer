@@ -19,8 +19,8 @@ const cCutFull = '${gs}V0'; // Full cut
 const cCutPart = '${gs}V1'; // Partial cut
 
 // Cash drawer open
-const cCashDrawerPin2 = '${esc}p030255'; // Cash drawer open
-const cCashDrawerPin5 = '${esc}p130255';
+const cCashDrawerPin2 = '${esc}p030'; // Cash drawer open
+const cCashDrawerPin5 = '${esc}p130';
 // Character
 const cReverseOn = '${gs}B1'; // Turn white/black reverse print mode on
 const cReverseOff = '${gs}B0'; // Turn white/black reverse print mode off
